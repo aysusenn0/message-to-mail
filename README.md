@@ -1,44 +1,80 @@
-✍️ Proje Açıklaması:
-Bu proje, Java kullanarak SMTP protokolü üzerinden e-posta göndermeyi sağlar. Kullanıcıdan alınan mesaj, dosyaya kaydedilir ve belirtilen alıcıya e-posta olarak gönderilir. Gmail SMTP veya Mailtrap kullanılarak test edilmiştir.
 
-🛠️ Kullanılan Teknolojiler:
-Java
+# 📧 Java Mail Sender
 
-JavaMail API
+Bu proje, Java kullanarak SMTP protokolü üzerinden e-posta göndermenizi sağlar.  
+Kullanıcıdan alınan mesaj bir dosyaya kaydedilir ve belirtilen alıcıya e-posta olarak gönderilir.  
+Gmail SMTP veya Mailtrap üzerinden test edilmiştir.
 
-SMTP (Gmail veya Mailtrap)
+---
 
-IntelliJ IDEA (IDE)
+## 🛠️ Kullanılan Teknolojiler
+- Java
+- JavaMail API (Maven ile entegre)
+- SMTP (Gmail veya Mailtrap)
+- IntelliJ IDEA
 
-💡 Proje Özellikleri:
-Kullanıcıdan mesaj alma
+---
 
-Mesajı dosyaya kaydetme
+## 💡 Özellikler
+- Kullanıcıdan mesaj alma
+- Mesajı `.txt` dosyasına kaydetme
+- SMTP üzerinden e-posta gönderme
+- Gmail veya Mailtrap ile uyumlu
 
-E-posta gönderme (Gmail / Mailtrap üzerinden)
+---
 
-🚀 Kurulum ve Çalıştırma:
-Gerekli Kütüphaneler:
-Proje, JavaMail API'yi kullanmaktadır. Gerekli kütüphaneleri pom.xml dosyasına ekleyebilirsiniz (Maven projesi).
+## ⚙️ Yapılandırma
 
-xml
-Kopyala
-Düzenle
-<dependency>
-    <groupId>com.sun.mail</groupId>
-    <artifactId>javax.mail</artifactId>
-    <version>1.6.2</version>
-</dependency>
-Gmail Ayarları:
-Gmail üzerinden çalıştırmak için, Gmail hesabınızın şifresini "Uygulama Şifresi" olarak ayarlayın. Daha fazla bilgi için Google Destek.
+### `application.properties` (src/main/resources)
 
-Mail Gönderme:
-JavaMail sınıfı kullanılarak e-posta gönderimi sağlanır. Kodun içerisinde SMTP ayarları ve kullanıcı bilgileri doğru bir şekilde girilmelidir.
+```properties
+myapp.mail="your-email@gmail.com"
+myapp.password="your-app-password"
+````
 
-💻 Çalıştırma:
-Projeyi indirin veya clone'layın.
+> ⚠️ Gmail kullanıyorsanız, [Google App Passwords](https://myaccount.google.com/apppasswords) üzerinden 16 haneli bir **Uygulama Şifresi** oluşturmalısınız.
+> Normal şifre ile çalışmaz.
 
-MailSender.java dosyasını çalıştırın.
+---
 
-Kullanıcıdan mesaj ve alıcı e-posta adresini girdikten sonra, mail başarıyla gönderilecektir.
+## ▶️ Uygulamayı Çalıştırma
+
+1. Projeyi indirin veya `git clone` ile alın
+2. `MailSender.java` dosyasını çalıştırın
+3. Alıcı e-posta adresini ve mesajı girin
+4. Mesaj dosyaya kaydedilir ve e-posta gönderilir
+5. Konsolda şu mesajı görürsünüz:
+
+```
+✅ Mail başarıyla gönderildi
+```
+
+---
+
+## 🛠️ Maven ile Build ve Çalıştırma
+
+### Derlemek için:
+
+```bash
+mvn clean install
+```
+
+### `.jar` dosyasını çalıştırmak için:
+
+```bash
+java -jar target/mail-sender-1.0-SNAPSHOT.jar
+```
+
+### Maven Wrapper ile (Maven kurulu değilse):
+
+```bash
+./mvnw clean install
+```
+
+---
+
+## 🧠 Güvenlik Notu
+
+* `application.properties` dosyasını `.gitignore` içine alın
+* E-posta ve şifre bilgilerini asla GitHub’a push etmeyin ❌
 
